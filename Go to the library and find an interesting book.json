@@ -1,0 +1,12 @@
+{
+  "duration" : "minutes",
+  "activity" : "Go to the library and find an interesting book",
+  "accessibility" : "Few to no challenges",
+  "price" : 0.05,
+  "kidFriendly" : true,
+  "link" : "",
+  "availability" : 0.2,
+  "type" : "relaxation",
+  "key" : "8253550",
+  "participants" : 1
+}
