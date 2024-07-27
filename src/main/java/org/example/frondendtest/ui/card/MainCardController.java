@@ -37,6 +37,7 @@ public class MainCardController implements Initializable {
     private SingletonInstance singletonInstance;
     private ObjectMapper objectMapper = null;
 
+    // setting the objects data
     public void setData(RandomDataModel randomDataModel) {
         title.setText(randomDataModel.getActivity());
         availability.setText(String.valueOf(randomDataModel.getAvailability()));
@@ -48,15 +49,23 @@ public class MainCardController implements Initializable {
         kidFriendly.setText(String.valueOf(randomDataModel.getKidFriendly()));
         link.setText((randomDataModel.getLink().isBlank() ? "NA": randomDataModel.getLink()));
         key.setText(randomDataModel.getKey());
+
+        // clicking the toggle option
+        // showing the more option
         more.addEventHandler(MouseEvent.MOUSE_PRESSED, _ -> {
             isVisible = !isVisible;
             moreOptions.setVisible(isVisible);
         });
+
+        // for the console button event
         print.addEventHandler(MouseEvent.MOUSE_PRESSED, _ -> {
+            // straight forward approach. Print the object to the consoel
             System.out.println(randomDataModel);
             isVisible = !isVisible;
             moreOptions.setVisible(false);
         });
+
+        // for the download csv event
         dlCSV.addEventHandler(MouseEvent.MOUSE_PRESSED, _ -> {
             CsvSchema.Builder csvSchemaBuilder = CsvSchema.builder();
 
@@ -86,6 +95,8 @@ public class MainCardController implements Initializable {
             isVisible = !isVisible;
             moreOptions.setVisible(false);
         });
+
+        // for the download as json button event
         dlJSON.addEventHandler(MouseEvent.MOUSE_PRESSED, _ -> {
             String fileName =  randomDataModel.getActivity() + ".json";
             File jsonFile = new File(fileName);
@@ -110,6 +121,8 @@ public class MainCardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         moreOptions.managedProperty().bind(moreOptions.visibleProperty());
+
+        // create/get the instance of the mapper
         singletonInstance = SingletonInstance.getInstance();
         objectMapper = singletonInstance.getObjectMapper();
     }

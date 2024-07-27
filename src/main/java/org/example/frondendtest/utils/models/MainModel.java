@@ -26,11 +26,14 @@ public class MainModel {
                 .build();
     }
 
+    // getting the data from the api
     public ArrayList<RandomDataModel> getData() throws IOException, InterruptedException {
         int i = 0;
         ArrayList<RandomDataModel> models = new ArrayList<>();
         while (i < NUM_OF_TIMES) {
             response = client.send(request, HttpResponse.BodyHandlers.ofString());
+
+            // error handling
             if (response.body().equals("Too many requests, please try again later.")) {
                 i++;
                 continue;

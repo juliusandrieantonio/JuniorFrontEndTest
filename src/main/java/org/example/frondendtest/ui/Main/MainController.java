@@ -21,6 +21,7 @@ public class MainController implements Initializable {
     public GridPane dataHolder;
     public ProgressIndicator progressIndicator;
 
+    // adding the cards
     public void changeView(ArrayList<RandomDataModel> temp) {
         dataHolder.getChildren().clear();
         dataHolder.getRowConstraints().clear();
@@ -58,8 +59,10 @@ public class MainController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        // initialize the main model
         MainModel mainModel = new MainModel();
         try {
+            // get the data from the api in form of object and pass it on the change view model to start the rendering
             changeView(mainModel.getData());
         } catch (IOException | InterruptedException e) {
             throw new RuntimeException(e);
