@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import org.example.frondendtest.ui.card.CardController;
+import org.example.frondendtest.ui.card.MainCardController;
 import org.example.frondendtest.utils.models.MainModel;
 import org.example.frondendtest.utils.models.RandomDataModel;
 
@@ -38,7 +38,7 @@ public class MainController implements Initializable {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/org/example/frondendtest/FXML/card.fxml"));
                     try {
                         Parent parent = loader.load();
-                        CardController encoderCardController = loader.getController();
+                        MainCardController encoderCardController = loader.getController();
                         encoderCardController.setData(temp.get((column * 3) + row));
                         dataHolder.add(parent, row, column);
 
